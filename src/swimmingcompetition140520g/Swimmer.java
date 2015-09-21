@@ -7,7 +7,7 @@ package swimmingcompetition140520g;
 
 
 public class Swimmer extends Person {
-    public Swimmer(String name,Gender gender){
+    public Swimmer(String name){
         super(name);                //Set the name
     }
 }

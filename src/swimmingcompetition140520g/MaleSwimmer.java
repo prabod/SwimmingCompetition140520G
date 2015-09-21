@@ -12,8 +12,8 @@ package swimmingcompetition140520g;
 public class MaleSwimmer extends Swimmer {
     
     protected final String clothColor = "Blue"; 
-    public MaleSwimmer(String name, Gender gender) {
-        super(name, gender);
+    public MaleSwimmer(String name) {
+        super(name);
     }
     
 }

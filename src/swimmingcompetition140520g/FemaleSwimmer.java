@@ -10,8 +10,8 @@ public class FemaleSwimmer extends Swimmer {
     
     protected final String clothColor = "Blue";
     
-    public FemaleSwimmer(String name, Gender gender) {
-        super(name, gender);
+    public FemaleSwimmer(String name) {
+        super(name);
     }
     
 }
