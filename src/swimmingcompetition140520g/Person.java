@@ -11,9 +11,8 @@ package swimmingcompetition140520g;
  */
 abstract class Person {
     protected String name;
-    
     Person(String name){
         this.name = name;           //Set the name
+        
     }
-    
 }
