@@ -21,4 +21,6 @@ public class Swimmer extends Person {
     public static int getNoOfSwimmers(){
         return noOfSwimmers;
     }
+    
+    
 }
