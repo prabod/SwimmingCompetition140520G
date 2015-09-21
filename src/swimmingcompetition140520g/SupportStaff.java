@@ -7,16 +7,12 @@ package swimmingcompetition140520g;
 
 /**
  *
- * @author 140520G
+ * @author prabod
  */
-abstract class Person {
-    protected String name;
+public class SupportStaff extends Person {
     
-    Person(String name){
-        this.name = name;           //Set the name
+    public SupportStaff(){
+        super();
         
     }
-    
-    //Blank Constructor for Objects that doesn't have a unique name
-    Person(){}
 }
