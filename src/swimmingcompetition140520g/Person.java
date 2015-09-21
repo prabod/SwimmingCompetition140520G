@@ -9,7 +9,7 @@ package swimmingcompetition140520g;
  *
  * @author 140520G
  */
-public class Person {
+abstract class Person {
     protected String name;
     
     Person(String name){
