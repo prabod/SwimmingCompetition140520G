@@ -17,15 +17,15 @@ public class Swimmer extends Person {
     }
     
     private void setClothColor(){
-       // try{
+        try{
             if (this.gender == Gender.MALE){
                 this.clothColor = "Blue";
             }
             else if (this.gender == Gender.FEMALE){
                 this.clothColor = "Red";
             }
-        //}
-        //catch{()}
+        }
+        catch(NullPointerException e){}
     }
     
 }
