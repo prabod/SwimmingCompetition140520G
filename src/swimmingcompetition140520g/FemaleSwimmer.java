@@ -47,8 +47,8 @@ public class FemaleSwimmer extends Swimmer {
     @Override
     public void swimBreastStroke() {
         while(true){
-            kick();
             moveBothHands();
+            kick();
             breath();
         }
     }
