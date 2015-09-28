@@ -13,5 +13,25 @@ public class FemaleSwimmer extends Swimmer {
     public FemaleSwimmer(String name) {
         super(name);
     }
+
+    @Override
+    public void swimFreeStyle() {
+        
+    }
+
+    @Override
+    public void swimButterflyStroke() {
+        
+    }
+
+    @Override
+    public void swimBackStroke() {
+        
+    }
+
+    @Override
+    public void swimBreastStroke() {
+        
+    }
     
 }

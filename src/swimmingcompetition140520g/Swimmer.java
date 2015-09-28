@@ -6,7 +6,7 @@
 package swimmingcompetition140520g;
 
 
-public class Swimmer extends Person {
+public abstract class Swimmer extends Person {
     private static int noOfSwimmers = 0;
     
     public Swimmer(String name){
@@ -22,5 +22,16 @@ public class Swimmer extends Person {
         return noOfSwimmers;
     }
     
+    public abstract void swimFreeStyle();
+    public abstract void swimButterflyStroke();
+    public abstract void swimBackStroke();
+    public abstract void swimBreastStroke();
+    
+    public void kick(){
+        
+    }
+    public void moveHand(){
+        
+    }
     
 }
