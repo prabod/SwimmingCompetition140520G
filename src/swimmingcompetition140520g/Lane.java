@@ -14,7 +14,7 @@ public class Lane {
     protected Swimmer swimmer;
     protected float startTime;
     protected float finishTime;
-    //protected Touchpad touchpad;
+    protected Touchpad touchpad;
     
     public Lane(int laneNumber, Swimmer swimmer){
         this.laneNumber = laneNumber;
