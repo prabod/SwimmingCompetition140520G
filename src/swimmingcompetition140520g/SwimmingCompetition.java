@@ -9,13 +9,38 @@ package swimmingcompetition140520g;
  *
  * @author Student
  */
-public class SwimmingCompetition {
+public class SwimmingCompetition{
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    private int noOfSwimmers;
+    private int noOfLanes;
+    private int noOfSpectators;
+    private int noOfJudges;
+    private Swimmer[] swimmers;
+    private Lane[] lanes;
+    private Spectator[] spectators;
+    private Judge[] judges;
+    public SwimmingCompetition(int noOfSwimmers,int noOfLanes,
+            int noOfSpectators, int noOfJudges){
+        this.noOfSwimmers = noOfSwimmers;
+        this.noOfLanes = noOfLanes;
+        this.noOfSpectators = noOfSpectators;
+        this.noOfJudges = noOfJudges;
+    }
+    
+    public void createSwimmers(){
+        this.swimmers = new Swimmer[this.noOfSwimmers];
+    }
+    
+    public void createLanes(){
+        this.lanes = new Lane[this.noOfLanes];
+    }
+    
+    public void createSpectators(){
+        this.spectators = new Spectator[this.noOfSpectators];
+    }
+    
+    public void createJudges(){
+        this.judges = new Judge[this.noOfJudges];
     }
     
 }
