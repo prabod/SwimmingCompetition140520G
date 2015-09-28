@@ -18,22 +18,41 @@ public class MaleSwimmer extends Swimmer {
 
     @Override
     public void swimFreeStyle() {
-        
+        while(kick()){
+            moveRightHand();
+            breath();
+            moveLeftHand();
+            breath();
+        }
     }
 
     @Override
     public void swimButterflyStroke() {
         
+        while(true){
+            kick();
+            moveBothHands();
+            kick();
+            breath();
+        }
     }
 
     @Override
     public void swimBackStroke() {
-        
+        while(kick()){
+            moveRightHand();
+            moveLeftHand();
+            breath();
+        }
     }
 
     @Override
     public void swimBreastStroke() {
-        
+        while(true){
+            kick();
+            moveBothHands();
+            breath();
+        }
     }
     
 }

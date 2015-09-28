@@ -16,22 +16,41 @@ public class FemaleSwimmer extends Swimmer {
 
     @Override
     public void swimFreeStyle() {
-        
+        while(kick()){
+            moveLeftHand();
+            breath();
+            moveRightHand();
+            breath();
+        }
     }
 
     @Override
     public void swimButterflyStroke() {
         
+        while(true){
+            kick();
+            moveBothHands();
+            breath();
+            kick();
+        }
     }
 
     @Override
     public void swimBackStroke() {
-        
+        while(kick()){
+            moveLeftHand();
+            moveRightHand();
+            breath();
+        }
     }
 
     @Override
     public void swimBreastStroke() {
-        
+        while(true){
+            kick();
+            moveBothHands();
+            breath();
+        }
     }
     
 }

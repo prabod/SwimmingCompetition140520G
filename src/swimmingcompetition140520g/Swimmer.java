@@ -27,11 +27,22 @@ public abstract class Swimmer extends Person {
     public abstract void swimBackStroke();
     public abstract void swimBreastStroke();
     
-    public void kick(){
-        
+    public boolean kick(){
+        return true;
     }
-    public void moveHand(){
+    public void moveLeftHand(){
         
     }
     
+    public void moveRightHand(){
+        
+    }
+    
+    public void moveBothHands(){
+        
+    }
+    
+    public void breath(){
+        
+    }
 }
