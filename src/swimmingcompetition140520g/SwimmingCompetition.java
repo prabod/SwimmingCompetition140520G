@@ -25,7 +25,7 @@ public class SwimmingCompetition{
     private Spectator[] spectators;
     private Judge[] judges;
     
-    protected ArrayList<Object> people = new ArrayList<Object>();
+    protected ArrayList<Person> people = new ArrayList<Person>();
     
     public SwimmingCompetition(int noOfSwimmers,int noOfLanes,
             int noOfSpectators, int noOfJudges){
@@ -45,7 +45,6 @@ public class SwimmingCompetition{
         //add people to arrayList
         people.addAll(Arrays.asList(this.swimmers));
         people.addAll(Arrays.asList(this.judges));
-        people.addAll(Arrays.asList(this.lanes));
         people.addAll(Arrays.asList(this.spectators));
         
         
@@ -54,7 +53,7 @@ public class SwimmingCompetition{
     private void createSwimmers(){
         this.swimmers = new Swimmer[this.noOfSwimmers];
         for (int i = 0 ; i < this.noOfSwimmers ; i++){
-            this.swimmers[i] = new MaleSwimmer("Male Swimmer " + i+1);
+            this.swimmers[i] = new MaleSwimmer("Male Swimmer " + i + 1);
         }
     }
     
