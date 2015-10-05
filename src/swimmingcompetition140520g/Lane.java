@@ -10,6 +10,7 @@ package swimmingcompetition140520g;
  * @author Student
  */
 public class Lane {
+    
     protected int laneNumber;
     protected Swimmer swimmer;
     protected float startTime;

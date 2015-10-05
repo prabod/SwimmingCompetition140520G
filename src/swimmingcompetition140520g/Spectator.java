@@ -14,7 +14,7 @@ public class Spectator extends Person{
     private boolean watching = false;
     private static int noOfSpectators = 0;
     
-    public Spectator(String name) {
+    public Spectator() {
         super();                        //Construct person
         noOfSpectators++;               //Increment number of Spectators
     }

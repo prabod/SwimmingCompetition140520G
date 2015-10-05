@@ -53,18 +53,30 @@ public class SwimmingCompetition{
     
     private void createSwimmers(){
         this.swimmers = new Swimmer[this.noOfSwimmers];
+        for (int i = 0 ; i < this.noOfSwimmers ; i++){
+            this.swimmers[i] = new MaleSwimmer("Male Swimmer " + i+1);
+        }
     }
     
     private void createLanes(){
         this.lanes = new Lane[this.noOfLanes];
+        for (int i = 0 ; i < this.noOfLanes ; i++){
+            this.lanes[i] = new Lane(i,this.swimmers[i]);
+        }
     }
     
     private void createSpectators(){
         this.spectators = new Spectator[this.noOfSpectators];
+        for (int i = 0 ; i < this.noOfSpectators ; i++){
+            this.spectators[i] = new Spectator();
+        }
     }
     
     private void createJudges(){
         this.judges = new Judge[this.noOfJudges];
+        for (int i = 0 ; i < this.noOfJudges ; i++){
+            this.judges[i] = new Judge("Judge " + i + 1);
+        }
     }
     
     public int getNoOfPeople(){
