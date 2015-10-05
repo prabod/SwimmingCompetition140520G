@@ -5,6 +5,9 @@
  */
 package swimmingcompetition140520g;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  *
  * @author Student
@@ -19,28 +22,47 @@ public class SwimmingCompetition{
     private Lane[] lanes;
     private Spectator[] spectators;
     private Judge[] judges;
+    
+    protected ArrayList<Object> people = new ArrayList<Object>();
+    
     public SwimmingCompetition(int noOfSwimmers,int noOfLanes,
             int noOfSpectators, int noOfJudges){
+        
         this.noOfSwimmers = noOfSwimmers;
         this.noOfLanes = noOfLanes;
         this.noOfSpectators = noOfSpectators;
         this.noOfJudges = noOfJudges;
+        
+        createSwimmers();
+        createLanes();
+        createSpectators();
+        createJudges();
+        
+        people.addAll(Arrays.asList(this.swimmers));
+        people.addAll(Arrays.asList(this.judges));
+        people.addAll(Arrays.asList(this.lanes));
+        people.addAll(Arrays.asList(this.spectators));
+        
+        
     }
     
-    public void createSwimmers(){
+    private void createSwimmers(){
         this.swimmers = new Swimmer[this.noOfSwimmers];
     }
     
-    public void createLanes(){
+    private void createLanes(){
         this.lanes = new Lane[this.noOfLanes];
     }
     
-    public void createSpectators(){
+    private void createSpectators(){
         this.spectators = new Spectator[this.noOfSpectators];
     }
     
-    public void createJudges(){
+    private void createJudges(){
         this.judges = new Judge[this.noOfJudges];
     }
     
+    public int getNoOfPeople(){
+        return people.size();
+    }
 }
