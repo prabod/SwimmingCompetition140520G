@@ -16,6 +16,9 @@ public class MaleSwimmer extends Swimmer {
         super(name);
     }
 
+    /**
+     *Simulate FreeStyle
+     */
     @Override
     public void swimFreeStyle() {
         while(kick()){
@@ -26,6 +29,9 @@ public class MaleSwimmer extends Swimmer {
         }
     }
 
+    /**
+     *Simulate Butterfly Stroke
+     */
     @Override
     public void swimButterflyStroke() {
         
@@ -37,6 +43,9 @@ public class MaleSwimmer extends Swimmer {
         }
     }
 
+    /**
+     *Simulate Back Stroke
+     */
     @Override
     public void swimBackStroke() {
         while(kick()){
@@ -46,6 +55,9 @@ public class MaleSwimmer extends Swimmer {
         }
     }
 
+    /**
+     *Simulate Breast Stroke
+     */
     @Override
     public void swimBreastStroke() {
         while(true){

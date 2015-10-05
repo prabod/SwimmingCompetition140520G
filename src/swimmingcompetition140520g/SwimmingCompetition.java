@@ -14,10 +14,12 @@ import java.util.Arrays;
  */
 public class SwimmingCompetition{
 
-    private int noOfSwimmers;
-    private int noOfLanes;
-    private int noOfSpectators;
-    private int noOfJudges;
+    private int noOfSwimmers;                           //# of Swimmers
+    private int noOfLanes;                              //# of Lanes
+    private int noOfSpectators;                         //# of Spectators
+    private int noOfJudges;                             //# of Judges
+    
+    //Empty Arrays to Hold Swimmers, Lanes, Spectators, Judges
     private Swimmer[] swimmers;
     private Lane[] lanes;
     private Spectator[] spectators;
@@ -28,16 +30,19 @@ public class SwimmingCompetition{
     public SwimmingCompetition(int noOfSwimmers,int noOfLanes,
             int noOfSpectators, int noOfJudges){
         
+        //Set No Of Each Fields
         this.noOfSwimmers = noOfSwimmers;
         this.noOfLanes = noOfLanes;
         this.noOfSpectators = noOfSpectators;
         this.noOfJudges = noOfJudges;
         
+        //Create Competition
         createSwimmers();
         createLanes();
         createSpectators();
         createJudges();
         
+        //add people to arrayList
         people.addAll(Arrays.asList(this.swimmers));
         people.addAll(Arrays.asList(this.judges));
         people.addAll(Arrays.asList(this.lanes));

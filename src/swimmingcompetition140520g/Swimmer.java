@@ -7,7 +7,7 @@ package swimmingcompetition140520g;
 
 
 public abstract class Swimmer extends Person {
-    private static int noOfSwimmers = 0;
+    private static int noOfSwimmers = 0; //Global Variable to hold # of swimmers
     
     public Swimmer(String name){
         super(name);                //Set the name
@@ -22,26 +22,44 @@ public abstract class Swimmer extends Person {
         return noOfSwimmers;
     }
     
+    // Methods for Swim
     public abstract void swimFreeStyle();
     public abstract void swimButterflyStroke();
     public abstract void swimBackStroke();
     public abstract void swimBreastStroke();
     
+    /**
+     * Simulate Kick
+     * @return
+     */
     public boolean kick(){
         return true;
     }
+    
+    /**
+     *Simulate Left hand Movement
+     */
     public void moveLeftHand(){
         
     }
     
+    /**
+     *Simulate Right hand Movement
+     */
     public void moveRightHand(){
         
     }
     
+    /**
+     *Simulate Left and Right hand Movement at the Same time
+     */
     public void moveBothHands(){
         
     }
     
+    /**
+     *Simulate Breath
+     */
     public void breath(){
         
     }
