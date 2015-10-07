@@ -14,11 +14,11 @@ import java.util.Arrays;
  */
 public class SwimmingCompetition{
 
-    private int noOfSwimmers;                           //# of Swimmers
-    private int noOfLanes;                              //# of Lanes
-    private int noOfSpectators;                         //# of Spectators
-    private int noOfJudges;                             //# of Judges
-    private int noOfSupportStaff;                             //# of Support Staff
+    private final int noOfSwimmers;                           //# of Swimmers
+    private final int noOfLanes;                              //# of Lanes
+    private final int noOfSpectators;                         //# of Spectators
+    private final int noOfJudges;                             //# of Judges
+    private final int noOfSupportStaff;                       //# of Support Staff
     
     //Empty Arrays to Hold Swimmers, Lanes, Spectators, Judges
     private Swimmer[] swimmers;
@@ -41,15 +41,16 @@ public class SwimmingCompetition{
         
         //Create Competition
         createSwimmers();
-        createLanes();
         createSpectators();
         createJudges();
         createSupportStaff();
+        
         
         //add people to arrayList
         people.addAll(Arrays.asList(this.swimmers));
         people.addAll(Arrays.asList(this.judges));
         people.addAll(Arrays.asList(this.spectators));
+        people.addAll(Arrays.asList(this.supportStaff));
         
         
     }
@@ -59,6 +60,7 @@ public class SwimmingCompetition{
         for (int i = 0 ; i < this.noOfSwimmers ; i++){
             this.swimmers[i] = new MaleSwimmer("Male Swimmer " + i + 1);
         }
+        createLanes();
     }
     
     private void createSupportStaff(){
@@ -70,8 +72,11 @@ public class SwimmingCompetition{
     
     private void createLanes(){
         this.lanes = new Lane[this.noOfLanes];
-        for (int i = 0 ; i < this.noOfLanes ; i++){
-            this.lanes[i] = new Lane(i,this.swimmers[i]);
+        System.out.println(this.noOfLanes);
+        int limit = this.noOfLanes >= this.noOfSwimmers ? 
+                this.noOfSwimmers : this.noOfLanes; 
+        for (int i = 0 ; i < limit ; i++){
+            this.lanes[i] = new Lane(i+1,this.swimmers[i]);
         }
     }
     
@@ -91,5 +96,10 @@ public class SwimmingCompetition{
     
     public int getNoOfPeople(){
         return people.size();
+    }
+    
+    @Override
+    public String toString(){
+        return "# of People" + getNoOfPeople();
     }
 }
