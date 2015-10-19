@@ -31,7 +31,9 @@ public class SwimmingCompetition{
     
     protected static ArrayList<Person> people = new ArrayList<>();
     
-    public SwimmingCompetition(int noOfMSwimmers,int noOfFSwimmers,int noOfLanes,
+    private static SwimmingCompetition competition = null;
+    
+    private SwimmingCompetition(int noOfMSwimmers,int noOfFSwimmers,int noOfLanes,
             int noOfSpectators, int noOfJudges ,int noOfSupportStaff){
         
         //Set No Of Each Fields
@@ -59,7 +61,22 @@ public class SwimmingCompetition{
         
         
     }
+    public static SwimmingCompetition setInstance(int noOfMSwimmers,int noOfFSwimmers,int noOfLanes,
+            int noOfSpectators, int noOfJudges ,int noOfSupportStaff){
+        if (competition == null){
+            competition = new SwimmingCompetition(noOfMSwimmers,noOfFSwimmers,noOfLanes,
+            noOfSpectators,noOfJudges ,noOfSupportStaff);
+        }
+        return competition;
+    }
     
+    public static SwimmingCompetition getInstance(){
+        if (competition != null){
+            return competition;
+        }
+        return null;
+    }
+        
     private void createMaleSwimmers(){
         this.mSwimmers = new Swimmer[this.noOfMSwimmers];
         for (int i = 0 ; i < this.noOfMSwimmers ; i++){

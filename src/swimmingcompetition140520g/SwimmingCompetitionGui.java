@@ -176,11 +176,11 @@ public class SwimmingCompetitionGui extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(114, Short.MAX_VALUE)
+                .addContainerGap(117, Short.MAX_VALUE)
                 .addComponent(jLabel15)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(127, 127, 127))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         pack();
@@ -207,7 +207,7 @@ public class SwimmingCompetitionGui extends javax.swing.JFrame {
                 "Added " + this.noOfJudges + " Judges <br>"+
                 "Added " + this.noOfSup + " Support Staff <br>" + "</html>"
                 );
-        competition = new SwimmingCompetition(this.noOfmSwim,this.noOffSwim ,
+        competition = SwimmingCompetition.setInstance(this.noOfmSwim,this.noOffSwim ,
                 5 ,this.noOfSpec ,this.noOfJudges ,this.noOfSup);
         System.out.println(competition);
         
