@@ -19,4 +19,9 @@ public abstract class Person {
     
     //Blank Constructor for Objects that doesn't have a unique name
     Person(){}
+    
+    public void setName(String Name){
+        this.name = Name;
+    }
 }
+    
