@@ -29,7 +29,7 @@ public class SwimmingCompetition{
     private Judge[] judges;
     private SupportStaff[] supportStaff;
     
-    protected ArrayList<Person> people = new ArrayList<>();
+    protected static ArrayList<Person> people = new ArrayList<>();
     
     public SwimmingCompetition(int noOfMSwimmers,int noOfFSwimmers,int noOfLanes,
             int noOfSpectators, int noOfJudges ,int noOfSupportStaff){
