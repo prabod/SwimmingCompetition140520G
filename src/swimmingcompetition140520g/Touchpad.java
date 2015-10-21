@@ -5,11 +5,13 @@
  */
 package swimmingcompetition140520g;
 
+import java.util.Observable;
+
 /**
  *
  * @author Student
  */
-public class Touchpad {
+public class Touchpad extends Observable  {
     protected boolean touched;
     protected float time;
     

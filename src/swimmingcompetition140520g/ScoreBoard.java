@@ -6,12 +6,14 @@
 package swimmingcompetition140520g;
 
 import java.util.HashMap;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  *
  * @author Student
  */
-public class ScoreBoard {
+public class ScoreBoard implements Observer {
     protected HashMap scores;
     protected HashMap times;
     
@@ -24,5 +26,9 @@ public class ScoreBoard {
     }
     
     public void compareFinishTimes(){
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
     }
 }
