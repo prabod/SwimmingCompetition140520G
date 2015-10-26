@@ -182,21 +182,11 @@ public class SwimmingCompetitionGui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.noOfSpec = (int) jSpinner1.getValue();
-        this.noOfmSwim = (int) jSpinner2.getValue();
-        this.noOffSwim = (int) jSpinner3.getValue();
-        this.noOfJudges = (int) jSpinner4.getValue();
-        this.noOfSup = (int) jSpinner5.getValue();
-        jLabel12.setText("<html>"+
-                "Added " + this.noOfSpec + " Spectators <br>"+
-                "Added " + this.noOfmSwim + " Male Swimmers <br>"+
-                "Added " + this.noOffSwim + " Female Swimmers <br>"+
-                "Added " + this.noOfJudges + " Judges <br>"+
-                "Added " + this.noOfSup + " Support Staff <br>" + "</html>"
-                );
+
         competition = SwimmingCompetition.setInstance(this.noOfmSwim,this.noOffSwim ,
                 5 ,this.noOfSpec ,this.noOfJudges ,this.noOfSup);
-        System.out.println(competition);
+        this.setVisible(false);
+        new PeopleInfoGUI().setVisible(true);
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

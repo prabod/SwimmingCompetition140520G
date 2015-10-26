@@ -22,12 +22,12 @@ public class SwimmingCompetition{
     private final int noOfSupportStaff;                       //# of Support Staff
     
     //Empty Arrays to Hold Swimmers, Lanes, Spectators, Judges
-    private Swimmer[] mSwimmers;
-    private Swimmer[] fSwimmers;
-    private Lane[] lanes;
-    private Spectator[] spectators;
-    private Judge[] judges;
-    private SupportStaff[] supportStaff;
+    protected Swimmer[] mSwimmers;
+    protected Swimmer[] fSwimmers;
+    protected Lane[] lanes;
+    protected Spectator[] spectators;
+    protected Judge[] judges;
+    protected SupportStaff[] supportStaff;
     
     protected static ArrayList<Person> people = new ArrayList<>();
     
