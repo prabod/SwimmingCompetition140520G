@@ -5,20 +5,51 @@
  */
 package swimmingcompetition140520g;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  *
  * @author Student
  */
 public class PeopleInfoGUI extends javax.swing.JFrame {
 
+    private final int noOfmSwim;
+    private final int noOffSwim;
+    private final int noOfSpec;
+    private final int noOfJudges;
+    private final int noOfSup;
+    private HashMap<String, String> mSwimmers = new HashMap();
+    private HashMap<String, String> fSwimmers = new HashMap();
+    private HashMap<String, String> judges = new HashMap();
+    private HashMap<String, String> supportStaff = new HashMap();
+
     /**
      * Creates new form PeopleInfoGUI
+     *
+     * @param noOfmSwim
+     * @param noOffSwim
+     * @param noOfSpec
+     * @param noOfJudges
+     * @param noOfSup
      */
-    SwimmingCompetition comp;
-    public PeopleInfoGUI() {
+    public PeopleInfoGUI(int noOfmSwim, int noOffSwim, int noOfSpec, int noOfJudges, int noOfSup) {
         initComponents();
-        comp = SwimmingCompetition.getInstance();
-        
+        this.noOfmSwim = noOfmSwim;
+        this.noOffSwim = noOffSwim;
+        this.noOfSpec = noOfSpec;
+        this.noOfJudges = noOfJudges;
+        this.noOfSup = noOfSup;
+
+    }
+
+    public HashMap<String, HashMap> getInfo() {
+        HashMap<String, HashMap> people = new HashMap<String, HashMap>();
+        people.put("mSwimmers", this.mSwimmers);
+        people.put("fSwimmers", this.fSwimmers);
+        people.put("judges", this.judges);
+        people.put("supportStaff", this.supportStaff);
+        return people;
     }
 
     /**
@@ -405,95 +436,61 @@ public class PeopleInfoGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        comp.mSwimmers[0].setName(this.jTextField1.getText());
+        mSwimmers.put("mSwimmer1", this.jTextField1.getText());
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        comp.mSwimmers[1].setName(this.jTextField2.getText());
+        mSwimmers.put("mSwimmer2", this.jTextField2.getText());
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        comp.mSwimmers[3].setName(this.jTextField4.getText());
+        mSwimmers.put("mSwimmer4", this.jTextField4.getText());
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
-        comp.fSwimmers[0].setName(this.jTextField6.getText());
+        fSwimmers.put("fSwimmer1", this.jTextField6.getText());
     }//GEN-LAST:event_jTextField6ActionPerformed
 
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
-        comp.fSwimmers[1].setName(this.jTextField7.getText());
+        fSwimmers.put("fSwimmer2", this.jTextField7.getText());
     }//GEN-LAST:event_jTextField7ActionPerformed
 
     private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
-        comp.fSwimmers[3].setName(this.jTextField10.getText());
+        fSwimmers.put("mSwimmer4", this.jTextField10.getText());
     }//GEN-LAST:event_jTextField10ActionPerformed
 
     private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
-        comp.judges[0].setName(this.jTextField11.getText());
+        judges.put("judge1", this.jTextField11.getText());
     }//GEN-LAST:event_jTextField11ActionPerformed
 
     private void jTextField12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField12ActionPerformed
-        comp.judges[1].setName(this.jTextField12.getText());
+        judges.put("judge2", this.jTextField12.getText());
     }//GEN-LAST:event_jTextField12ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        comp.mSwimmers[2].setName(this.jTextField3.getText());
+        mSwimmers.put("mSwimmer3", this.jTextField3.getText());
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        comp.mSwimmers[4].setName(this.jTextField5.getText());
+        mSwimmers.put("mSwimmer5", this.jTextField5.getText());
     }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
-        comp.fSwimmers[2].setName(this.jTextField8.getText());
+        fSwimmers.put("fSwimmer", this.jTextField8.getText());
     }//GEN-LAST:event_jTextField8ActionPerformed
 
     private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
-        comp.fSwimmers[4].setName(this.jTextField9.getText());
+        fSwimmers.put("mSwimmer5", this.jTextField9.getText());
     }//GEN-LAST:event_jTextField9ActionPerformed
 
     private void jTextField13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField13ActionPerformed
-        comp.judges[2].setName(this.jTextField11.getText());
+        judges.put("judge3", this.jTextField11.getText());
     }//GEN-LAST:event_jTextField13ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PeopleInfoGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PeopleInfoGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PeopleInfoGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PeopleInfoGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PeopleInfoGUI().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

@@ -3,52 +3,66 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package swimmingcompetition140520g;
+package model;
 
-
-public class FemaleSwimmer extends Swimmer {
+/**
+ *
+ * @author Student
+ */
+public class MaleSwimmer extends Swimmer {
     
-    protected final String clothColor = "Blue";
-    
-    public FemaleSwimmer(String name) {
+    protected final String clothColor = "Blue"; 
+    public MaleSwimmer(String name) {
         super(name);
     }
 
+    /**
+     *Simulate FreeStyle
+     */
     @Override
     public void swimFreeStyle() {
         while(kick()){
-            moveLeftHand();
-            breath();
             moveRightHand();
+            breath();
+            moveLeftHand();
             breath();
         }
     }
 
+    /**
+     *Simulate Butterfly Stroke
+     */
     @Override
     public void swimButterflyStroke() {
         
         while(true){
             kick();
             moveBothHands();
-            breath();
             kick();
+            breath();
         }
     }
 
+    /**
+     *Simulate Back Stroke
+     */
     @Override
     public void swimBackStroke() {
         while(kick()){
-            moveLeftHand();
             moveRightHand();
+            moveLeftHand();
             breath();
         }
     }
 
+    /**
+     *Simulate Breast Stroke
+     */
     @Override
     public void swimBreastStroke() {
         while(true){
-            moveBothHands();
             kick();
+            moveBothHands();
             breath();
         }
     }

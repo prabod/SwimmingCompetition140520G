@@ -5,6 +5,11 @@
  */
 package swimmingcompetition140520g;
 
+import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  *
  * @author prabod
@@ -15,7 +20,6 @@ public class SwimmingCompetitionGui extends javax.swing.JFrame {
      * Creates new form SwimmingCompetitionGui
      */
     int noOfSpec,noOfmSwim,noOffSwim,noOfJudges,noOfSup;
-    SwimmingCompetition competition;
     public SwimmingCompetitionGui() {
         initComponents();
     }
@@ -182,49 +186,22 @@ public class SwimmingCompetitionGui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        competition = SwimmingCompetition.setInstance(this.noOfmSwim,this.noOffSwim ,
-                5 ,this.noOfSpec ,this.noOfJudges ,this.noOfSup);
+        this.noOfSpec = (Integer)jSpinner1.getValue();
+        this.noOfmSwim = (Integer)jSpinner2.getValue();
+        this.noOffSwim = (Integer)jSpinner3.getValue();
+        this.noOfJudges = (Integer)jSpinner4.getValue();
+        this.noOfSup = (Integer)jSpinner5.getValue();
         this.setVisible(false);
-        new PeopleInfoGUI().setVisible(true);
+        this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
         
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
     /**
-     * @param args the command line arguments
+     *
+     * @return
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SwimmingCompetitionGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SwimmingCompetitionGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SwimmingCompetitionGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SwimmingCompetitionGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        
-        
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SwimmingCompetitionGui().setVisible(true);
-            }
-        });
+    public List<Integer> getInfo(){
+        return Arrays.asList(this.noOfmSwim,this.noOffSwim ,this.noOfSpec ,this.noOfJudges ,this.noOfSup);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
