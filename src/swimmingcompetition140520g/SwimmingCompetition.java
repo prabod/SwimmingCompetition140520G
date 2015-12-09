@@ -5,8 +5,13 @@
  */
 package swimmingcompetition140520g;
 
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import model.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  *
@@ -14,12 +19,12 @@ import java.util.Arrays;
  */
 public class SwimmingCompetition{
 
-    private final int noOfFSwimmers;                          //# of Female Swimmers
-    private final int noOfMSwimmers;                          //# of Male Swimmers
-    private final int noOfLanes;                              //# of Lanes
-    private final int noOfSpectators;                         //# of Spectators
-    private final int noOfJudges;                             //# of Judges
-    private final int noOfSupportStaff;                       //# of Support Staff
+    private static int noOfFSwimmers;                          //# of Female Swimmers
+    private static int noOfMSwimmers;                          //# of Male Swimmers
+    private static int noOfLanes;                              //# of Lanes
+    private static int noOfSpectators;                         //# of Spectators
+    private static int noOfJudges;                             //# of Judges
+    private static int noOfSupportStaff;                       //# of Support Staff
     
     //Empty Arrays to Hold Swimmers, Lanes, Spectators, Judges
     protected Swimmer[] mSwimmers;
@@ -28,14 +33,56 @@ public class SwimmingCompetition{
     protected Spectator[] spectators;
     protected Judge[] judges;
     protected SupportStaff[] supportStaff;
+   
     
-    protected static ArrayList<Person> people = new ArrayList<>();
-    
-    private static SwimmingCompetition competition = null;
-    
-    private SwimmingCompetition(int noOfMSwimmers,int noOfFSwimmers,int noOfLanes,
-            int noOfSpectators, int noOfJudges ,int noOfSupportStaff){
+    public static void main(String[] args) {
+        SwimmingCompetitionGui SCGui = new SwimmingCompetitionGui();
+        SCGui.setVisible(true);
+        List quantities = SCGui.getInfo();
+        noOfFSwimmers = (int) quantities.get(0);                          //# of Female Swimmers
+        noOfMSwimmers = (int) quantities.get(1);                          //# of Male Swimmers
+        noOfLanes = 5;                                                    //# of Lanes
+        noOfSpectators = (int) quantities.get(2);                         //# of Spectators
+        noOfJudges = (int) quantities.get(3);                             //# of Judges
+        noOfSupportStaff = (int) quantities.get(4);
+        final PeopleInfoGUI peopleInfo = new PeopleInfoGUI(noOfMSwimmers, noOfFSwimmers ,
+                                    noOfSpectators, noOfJudges, noOfSupportStaff);
+        SCGui.addWindowListener(new WindowListener(){
+
+            @Override
+            public void windowOpened(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+                peopleInfo.setVisible(true);
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                 peopleInfo.setVisible(true);
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+            }
+        });
         
+        
+    }
+        /*
         //Set No Of Each Fields
         this.noOfFSwimmers = noOfFSwimmers;
         this.noOfMSwimmers = noOfMSwimmers;
@@ -51,44 +98,20 @@ public class SwimmingCompetition{
         createJudges();
         createSupportStaff();
         
+    */
         
-        //add people to arrayList
-        people.addAll(Arrays.asList(this.mSwimmers));
-        people.addAll(Arrays.asList(this.fSwimmers));
-        people.addAll(Arrays.asList(this.judges));
-        people.addAll(Arrays.asList(this.spectators));
-        people.addAll(Arrays.asList(this.supportStaff));
-        
-        
-    }
-    public static SwimmingCompetition setInstance(int noOfMSwimmers,int noOfFSwimmers,int noOfLanes,
-            int noOfSpectators, int noOfJudges ,int noOfSupportStaff){
-        if (competition == null){
-            competition = new SwimmingCompetition(noOfMSwimmers,noOfFSwimmers,noOfLanes,
-            noOfSpectators,noOfJudges ,noOfSupportStaff);
-        }
-        return competition;
-    }
-    
-    public static SwimmingCompetition getInstance(){
-        if (competition != null){
-            return competition;
-        }
-        return null;
-    }
-        
-    private void createMaleSwimmers(){
+    private void createMaleSwimmers(HashMap names){
         this.mSwimmers = new Swimmer[this.noOfMSwimmers];
         for (int i = 0 ; i < this.noOfMSwimmers ; i++){
-            this.mSwimmers[i] = new MaleSwimmer("Male Swimmer " + i + 1);
+            this.mSwimmers[i] = new MaleSwimmer((String) names.get("mSwimmer" + i + 1));
         }
         createLanes();
     }
     
-    private void createFemaleSwimmers(){
+    private void createFemaleSwimmers(HashMap names){
         this.fSwimmers = new Swimmer[this.noOfFSwimmers];
         for (int i = 0 ; i < this.noOfFSwimmers ; i++){
-            this.fSwimmers[i] = new FemaleSwimmer("Female Swimmer " + i + 1);
+            this.fSwimmers[i] = new FemaleSwimmer((String) names.get("fSwimmer" + i + 1));
         }
         createLanes();
     }
@@ -131,19 +154,13 @@ public class SwimmingCompetition{
         }
     }
     
-    private void createJudges(){
+    private void createJudges(HashMap names){
         this.judges = new Judge[this.noOfJudges];
         for (int i = 0 ; i < this.noOfJudges ; i++){
-            this.judges[i] = new Judge("Judge " + i + 1);
+            this.judges[i] = new Judge((String) names.get("judge " + i + 1));
         }
     }
     
-    public int getNoOfPeople(){
-        return people.size();
-    }
     
-    @Override
-    public String toString(){
-        return "# of People " + getNoOfPeople();
-    }
+
 }
