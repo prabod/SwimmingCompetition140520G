@@ -8,6 +8,7 @@ package swimmingcompetition140520g;
 import model.*;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.CyclicBarrier;
 
 /**
  *
@@ -34,6 +35,7 @@ public class SwimmingCompetition {
     protected static Spectator[] spectators;
     protected static Judge[] judges;
     protected static SupportStaff[] supportStaff;
+    final CyclicBarrier gate = new CyclicBarrier(6);
 
     public static void main(String[] args) {
         SwimmingCompetitionGui SCGui = new SwimmingCompetitionGui();

@@ -9,7 +9,7 @@ package model;
  *
  * @author Student
  */
-public class Lane {
+public class Lane extends Thread {
     
     protected int laneNumber;
     protected Swimmer swimmer;

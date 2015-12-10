@@ -1,5 +1,6 @@
 package swimmingcompetition140520g;
 
+import java.util.HashMap;
 import javax.swing.ImageIcon;
 
 /*
@@ -17,17 +18,24 @@ public class SwimmingPool extends javax.swing.JFrame {
     /**
      * Creates new form SwimmingPool
      */
+    static int pos = 0; 
     ImageIcon mSwimmericon = new ImageIcon("images/mSwimmer.png");
     ImageIcon fSwimmerIcon = new ImageIcon("images/fSwimmer.png");
     public SwimmingPool() {
         initComponents();
     }
     
-    public int returnX(javax.swing.JLabel label){
+    public static HashMap<String,javax.swing.JLabel> getLabels(){
+        HashMap<String,javax.swing.JLabel> labels = new HashMap<String,javax.swing.JLabel>();
+        labels.add(jLabel2);
+    }
+    
+    public static int returnX(javax.swing.JLabel label){
         return label.getX();
     }
     
-    public void setX(javax.swing.JLabel label ,int x){
+    public static void setX(int x){
+        
         label.setLocation(x,label.getY());
     }
     
