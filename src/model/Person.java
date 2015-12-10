@@ -23,5 +23,8 @@ public abstract class Person {
     public void setName(String Name){
         this.name = Name;
     }
+    public String getName(){
+        return this.name;
+    }
 }
     

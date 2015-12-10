@@ -5,11 +5,7 @@
  */
 package swimmingcompetition140520g;
 
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import model.*;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -17,7 +13,7 @@ import java.util.List;
  *
  * @author Student
  */
-public class SwimmingCompetition{
+public class SwimmingCompetition {
 
     private static int noOfFSwimmers;                          //# of Female Swimmers
     private static int noOfMSwimmers;                          //# of Male Swimmers
@@ -26,141 +22,98 @@ public class SwimmingCompetition{
     private static int noOfJudges;                             //# of Judges
     private static int noOfSupportStaff;                       //# of Support Staff
     
-    //Empty Arrays to Hold Swimmers, Lanes, Spectators, Judges
-    protected Swimmer[] mSwimmers;
-    protected Swimmer[] fSwimmers;
-    protected Lane[] lanes;
-    protected Spectator[] spectators;
-    protected Judge[] judges;
-    protected SupportStaff[] supportStaff;
-   
+    private static int type;
     
+    static PeopleInfoGUI peopleInfo;
+    static HashMap<String, HashMap> names;
+
+    //Empty Arrays to Hold Swimmers, Lanes, Spectators, Judges
+    protected static Swimmer[] mSwimmers;
+    protected static Swimmer[] fSwimmers;
+    protected static Lane[] lanes;
+    protected static Spectator[] spectators;
+    protected static Judge[] judges;
+    protected static SupportStaff[] supportStaff;
+
     public static void main(String[] args) {
         SwimmingCompetitionGui SCGui = new SwimmingCompetitionGui();
         SCGui.setVisible(true);
-        List quantities = SCGui.getInfo();
+        peopleInfo = new PeopleInfoGUI(noOfMSwimmers, noOfFSwimmers,
+                noOfSpectators, noOfJudges, noOfSupportStaff);
+
+    }
+    public static void setType(int type){
+        SwimmingCompetition.type = type;
+        createLanes(type);
+    }
+
+    public static void createPeople(HashMap<String, HashMap> names) {
+        //Create Competition
+        createMaleSwimmers(names.get("mSwimmers"));
+        createFemaleSwimmers(names.get("fSwimmers"));
+        createSpectators();
+        createJudges(names.get("judges"));
+        createSupportStaff();
+    }
+
+    public static void setQuantities(List<Integer> quantities) {
         noOfFSwimmers = (int) quantities.get(0);                          //# of Female Swimmers
         noOfMSwimmers = (int) quantities.get(1);                          //# of Male Swimmers
         noOfLanes = 5;                                                    //# of Lanes
         noOfSpectators = (int) quantities.get(2);                         //# of Spectators
         noOfJudges = (int) quantities.get(3);                             //# of Judges
         noOfSupportStaff = (int) quantities.get(4);
-        final PeopleInfoGUI peopleInfo = new PeopleInfoGUI(noOfMSwimmers, noOfFSwimmers ,
-                                    noOfSpectators, noOfJudges, noOfSupportStaff);
-        SCGui.addWindowListener(new WindowListener(){
-
-            @Override
-            public void windowOpened(WindowEvent e) {
-            }
-
-            @Override
-            public void windowClosing(WindowEvent e) {
-                peopleInfo.setVisible(true);
-            }
-
-            @Override
-            public void windowClosed(WindowEvent e) {
-                 peopleInfo.setVisible(true);
-            }
-
-            @Override
-            public void windowIconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeiconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowActivated(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeactivated(WindowEvent e) {
-            }
-        });
-        
-        
     }
-        /*
-        //Set No Of Each Fields
-        this.noOfFSwimmers = noOfFSwimmers;
-        this.noOfMSwimmers = noOfMSwimmers;
-        this.noOfLanes = noOfLanes;
-        this.noOfSpectators = noOfSpectators;
-        this.noOfJudges = noOfJudges;
-        this.noOfSupportStaff = noOfSupportStaff;
-        
-        //Create Competition
-        createMaleSwimmers();
-        createFemaleSwimmers();
-        createSpectators();
-        createJudges();
-        createSupportStaff();
-        
-    */
-        
-    private void createMaleSwimmers(HashMap names){
-        this.mSwimmers = new Swimmer[this.noOfMSwimmers];
-        for (int i = 0 ; i < this.noOfMSwimmers ; i++){
-            this.mSwimmers[i] = new MaleSwimmer((String) names.get("mSwimmer" + i + 1));
-        }
-        createLanes();
-    }
-    
-    private void createFemaleSwimmers(HashMap names){
-        this.fSwimmers = new Swimmer[this.noOfFSwimmers];
-        for (int i = 0 ; i < this.noOfFSwimmers ; i++){
-            this.fSwimmers[i] = new FemaleSwimmer((String) names.get("fSwimmer" + i + 1));
-        }
-        createLanes();
-    }
-    
-    private void createSupportStaff(){
-        this.supportStaff = new SupportStaff[this.noOfSupportStaff];
-        for (int i = 0 ; i < this.noOfSupportStaff ; i++){
-            this.supportStaff[i] = new SupportStaff();
+
+    private static void createMaleSwimmers(HashMap<String, String> names) {
+        SwimmingCompetition.mSwimmers = new Swimmer[SwimmingCompetition.noOfMSwimmers];
+        for (int i = 0; i < SwimmingCompetition.noOfMSwimmers; i++) {
+            SwimmingCompetition.mSwimmers[i] = new MaleSwimmer((String) names.get("mSwimmer" + i + 1));
         }
     }
-    
-    private void createLanes(){
-        this.lanes = new Lane[this.noOfLanes];
-        int limit = this.noOfLanes >= this.noOfMSwimmers + this.noOfFSwimmers ? 
-                this.noOfFSwimmers + this.noOfMSwimmers : this.noOfLanes; 
+
+    private static void createFemaleSwimmers(HashMap<String, String> names) {
+        SwimmingCompetition.fSwimmers = new Swimmer[SwimmingCompetition.noOfFSwimmers];
+        for (int i = 0; i < SwimmingCompetition.noOfFSwimmers; i++) {
+            SwimmingCompetition.fSwimmers[i] = new FemaleSwimmer((String) names.get("fSwimmer" + i + 1));
+        }
+    }
+
+    private static void createSupportStaff() {
+        SwimmingCompetition.supportStaff = new SupportStaff[SwimmingCompetition.noOfSupportStaff];
+        for (int i = 0; i < SwimmingCompetition.noOfSupportStaff; i++) {
+            SwimmingCompetition.supportStaff[i] = new SupportStaff();
+        }
+    }
+
+    private static void createLanes(int type) {
+        SwimmingCompetition.lanes = new Lane[SwimmingCompetition.noOfLanes];
+        int limit = SwimmingCompetition.noOfLanes;
+        Swimmer[] temp = null;
+        if(type == 1){
+            temp = mSwimmers;
+        }
+        else if (type == 2){
+            temp = fSwimmers;
+        }
         int j = 0;
-        for (int i = 0 ; i < limit ; i++){
-            if(i%2 == 0){
-                try{
-                    this.lanes[i] = new Lane(i+1,this.mSwimmers[j]);
-                }
-                catch(NullPointerException | ArrayIndexOutOfBoundsException e){
-                }
-            }
-            else{
-                try{
-                    this.lanes[i] = new Lane(i+1,this.fSwimmers[j]);
-                }
-                catch(NullPointerException | ArrayIndexOutOfBoundsException e){
-                }
-                j++;
-            }
+        for (int i = 0; i < limit; i++) {
+            lanes[i] = new Lane(i,temp[i]);
         }
     }
-    
-    private void createSpectators(){
-        this.spectators = new Spectator[this.noOfSpectators];
-        for (int i = 0 ; i < this.noOfSpectators ; i++){
-            this.spectators[i] = new Spectator();
+
+    private static void createSpectators() {
+        SwimmingCompetition.spectators = new Spectator[SwimmingCompetition.noOfSpectators];
+        for (int i = 0; i < SwimmingCompetition.noOfSpectators; i++) {
+            SwimmingCompetition.spectators[i] = new Spectator();
         }
     }
-    
-    private void createJudges(HashMap names){
-        this.judges = new Judge[this.noOfJudges];
-        for (int i = 0 ; i < this.noOfJudges ; i++){
-            this.judges[i] = new Judge((String) names.get("judge " + i + 1));
+
+    private static void createJudges(HashMap<String, String> names) {
+        SwimmingCompetition.judges = new Judge[SwimmingCompetition.noOfJudges];
+        for (int i = 0; i < SwimmingCompetition.noOfJudges; i++) {
+            SwimmingCompetition.judges[i] = new Judge((String) names.get("judge " + i + 1));
         }
     }
-    
-    
 
 }

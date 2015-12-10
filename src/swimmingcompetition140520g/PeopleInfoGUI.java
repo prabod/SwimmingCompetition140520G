@@ -19,10 +19,9 @@ public class PeopleInfoGUI extends javax.swing.JFrame {
     private final int noOfSpec;
     private final int noOfJudges;
     private final int noOfSup;
-    private HashMap<String, String> mSwimmers = new HashMap();
-    private HashMap<String, String> fSwimmers = new HashMap();
-    private HashMap<String, String> judges = new HashMap();
-    private HashMap<String, String> supportStaff = new HashMap();
+    private final HashMap<String, String> mSwimmers = new HashMap();
+    private final HashMap<String, String> fSwimmers = new HashMap();
+    private final HashMap<String, String> judges = new HashMap();
 
     /**
      * Creates new form PeopleInfoGUI
@@ -43,14 +42,6 @@ public class PeopleInfoGUI extends javax.swing.JFrame {
 
     }
 
-    public HashMap<String, HashMap> getInfo() {
-        HashMap<String, HashMap> people = new HashMap<String, HashMap>();
-        people.put("mSwimmers", this.mSwimmers);
-        people.put("fSwimmers", this.fSwimmers);
-        people.put("judges", this.judges);
-        people.put("supportStaff", this.supportStaff);
-        return people;
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -489,6 +480,11 @@ public class PeopleInfoGUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.setVisible(false);
+        HashMap<String, HashMap> people = new HashMap<String, HashMap>();
+        people.put("mSwimmers", this.mSwimmers);
+        people.put("fSwimmers", this.fSwimmers);
+        people.put("judges", this.judges);
+        SwimmingCompetition.createPeople(people);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
