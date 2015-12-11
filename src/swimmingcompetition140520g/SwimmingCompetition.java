@@ -8,7 +8,10 @@ package swimmingcompetition140520g;
 import model.*;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,9 +26,10 @@ public class SwimmingCompetition {
     private static int noOfJudges;                             //# of Judges
     private static int noOfSupportStaff;                       //# of Support Staff
     
-    private static int type;
+    public static int type;
     
     static PeopleInfoGUI peopleInfo;
+    static SwimmingPool pool;
     static HashMap<String, HashMap> names;
 
     //Empty Arrays to Hold Swimmers, Lanes, Spectators, Judges
@@ -35,27 +39,36 @@ public class SwimmingCompetition {
     protected static Spectator[] spectators;
     protected static Judge[] judges;
     protected static SupportStaff[] supportStaff;
-    final CyclicBarrier gate = new CyclicBarrier(6);
+    final static CyclicBarrier gate = new CyclicBarrier(6);
 
     public static void main(String[] args) {
         SwimmingCompetitionGui SCGui = new SwimmingCompetitionGui();
         SCGui.setVisible(true);
-        peopleInfo = new PeopleInfoGUI(noOfMSwimmers, noOfFSwimmers,
-                noOfSpectators, noOfJudges, noOfSupportStaff);
+        try {
+            gate.await();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(SwimmingCompetition.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (BrokenBarrierException ex) {
+            Logger.getLogger(SwimmingCompetition.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
-    public static void setType(int type){
-        SwimmingCompetition.type = type;
-        createLanes(type);
+    public static void setType(int typei){
+        type = typei;
     }
 
     public static void createPeople(HashMap<String, HashMap> names) {
         //Create Competition
-        createMaleSwimmers(names.get("mSwimmers"));
-        createFemaleSwimmers(names.get("fSwimmers"));
+        if(noOfMSwimmers != 0 ){
+            createMaleSwimmers(names.get("mSwimmers"));
+        }
+        if(noOfFSwimmers != 0){
+            createFemaleSwimmers(names.get("fSwimmers"));
+        }
         createSpectators();
         createJudges(names.get("judges"));
         createSupportStaff();
+        
     }
 
     public static void setQuantities(List<Integer> quantities) {
@@ -88,22 +101,27 @@ public class SwimmingCompetition {
         }
     }
 
-    private static void createLanes(int type) {
+    public static void createLanes() {
         SwimmingCompetition.lanes = new Lane[SwimmingCompetition.noOfLanes];
         int limit = SwimmingCompetition.noOfLanes;
         Swimmer[] temp = null;
-        if(type == 1){
+        if(SwimmingCompetition.type == 1){
             temp = mSwimmers;
         }
-        else if (type == 2){
+        else if (SwimmingCompetition.type == 2){
             temp = fSwimmers;
+        }   
+        for (int i = 0; i < temp.length; i++) {
+            lanes[i] = new Lane(i,temp[i],gate);
         }
-        int j = 0;
-        for (int i = 0; i < limit; i++) {
-            lanes[i] = new Lane(i,temp[i]);
+        
+    }
+    public static void startit(){
+        for (Lane lane : lanes) {
+            lane.start();
         }
     }
-
+    
     private static void createSpectators() {
         SwimmingCompetition.spectators = new Spectator[SwimmingCompetition.noOfSpectators];
         for (int i = 0; i < SwimmingCompetition.noOfSpectators; i++) {

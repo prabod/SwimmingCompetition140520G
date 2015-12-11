@@ -5,13 +5,18 @@
  */
 package model;
 
+import java.util.Random;
+
 
 public abstract class Swimmer extends Person {
     private static int noOfSwimmers = 0; //Global Variable to hold # of swimmers
+    int speed;
     
     public Swimmer(String name){
         super(name);                //Set the name
         noOfSwimmers++;             //Increment number of Swimmers
+        Random rn = new Random();
+        speed = rn.nextInt(20)+15;
     }
     
     /**

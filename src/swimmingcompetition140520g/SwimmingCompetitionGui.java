@@ -9,6 +9,7 @@ package swimmingcompetition140520g;
 import java.util.Arrays;
 import java.util.List;
 import javax.swing.ButtonGroup;
+import static swimmingcompetition140520g.SwimmingCompetition.peopleInfo;
 
 /**
  *
@@ -229,15 +230,18 @@ public class SwimmingCompetitionGui extends javax.swing.JFrame {
         this.noOffSwim = (Integer)jSpinner3.getValue();
         this.noOfJudges = (Integer)jSpinner4.getValue();
         this.noOfSup = (Integer)jSpinner5.getValue();
-        this.setVisible(false);
-        SwimmingCompetition.setQuantities(Arrays.asList(this.noOfmSwim,this.noOffSwim ,
-                this.noOfSpec ,this.noOfJudges ,this.noOfSup));
-        SwimmingCompetition.peopleInfo.setVisible(true);
         if (jRadioButton1.isSelected()){
             SwimmingCompetition.setType(1);
         }else if (jRadioButton2.isSelected()){
             SwimmingCompetition.setType(2);
         }
+        this.setVisible(false);
+        SwimmingCompetition.setQuantities(Arrays.asList(this.noOfmSwim,this.noOffSwim ,
+                this.noOfSpec ,this.noOfJudges ,this.noOfSup));
+        peopleInfo = new PeopleInfoGUI(this.noOfmSwim,this.noOffSwim ,
+                this.noOfSpec ,this.noOfJudges ,this.noOfSup);
+        SwimmingCompetition.peopleInfo.setVisible(true);
+        
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

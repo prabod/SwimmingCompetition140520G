@@ -5,8 +5,9 @@
  */
 package swimmingcompetition140520g;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -22,7 +23,9 @@ public class PeopleInfoGUI extends javax.swing.JFrame {
     private final HashMap<String, String> mSwimmers = new HashMap();
     private final HashMap<String, String> fSwimmers = new HashMap();
     private final HashMap<String, String> judges = new HashMap();
-
+    private JTextField[] male;
+    private final JTextField[] female;
+    private final JTextField[] judge;
     /**
      * Creates new form PeopleInfoGUI
      *
@@ -33,12 +36,27 @@ public class PeopleInfoGUI extends javax.swing.JFrame {
      * @param noOfSup
      */
     public PeopleInfoGUI(int noOfmSwim, int noOffSwim, int noOfSpec, int noOfJudges, int noOfSup) {
+        
         initComponents();
+        this.male = new JTextField[]{jTextField11,jTextField2,jTextField3,jTextField4,jTextField5};
+        this.female = new JTextField[]{jTextField6,jTextField7,jTextField8,jTextField9,jTextField10};
+        this.judge = new JTextField[]{jTextField11,jTextField12,jTextField13};
         this.noOfmSwim = noOfmSwim;
         this.noOffSwim = noOffSwim;
         this.noOfSpec = noOfSpec;
         this.noOfJudges = noOfJudges;
         this.noOfSup = noOfSup;
+        
+        for(int i= noOfmSwim ;i<5;i++){
+            this.male[i].setEnabled(false);
+        }
+        for(int i= noOffSwim ;i<5;i++){
+            this.female[i].setEnabled(false);
+        }
+        
+        for(int i= noOfJudges ;i<3;i++){
+            this.judge[i].setEnabled(false);
+        }
 
     }
 
@@ -364,15 +382,15 @@ public class PeopleInfoGUI extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
-                .addGap(18, 18, 18)
+                .addGap(22, 22, 22)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jButton1.setText("Submit");
@@ -427,64 +445,80 @@ public class PeopleInfoGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        mSwimmers.put("mSwimmer1", this.jTextField1.getText());
+        
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        mSwimmers.put("mSwimmer2", this.jTextField2.getText());
+        
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        mSwimmers.put("mSwimmer4", this.jTextField4.getText());
+        
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
-        fSwimmers.put("fSwimmer1", this.jTextField6.getText());
+        
     }//GEN-LAST:event_jTextField6ActionPerformed
 
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
-        fSwimmers.put("fSwimmer2", this.jTextField7.getText());
+        
     }//GEN-LAST:event_jTextField7ActionPerformed
 
     private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
-        fSwimmers.put("mSwimmer4", this.jTextField10.getText());
+        
     }//GEN-LAST:event_jTextField10ActionPerformed
 
     private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
-        judges.put("judge1", this.jTextField11.getText());
+        
     }//GEN-LAST:event_jTextField11ActionPerformed
 
     private void jTextField12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField12ActionPerformed
-        judges.put("judge2", this.jTextField12.getText());
+        
     }//GEN-LAST:event_jTextField12ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        mSwimmers.put("mSwimmer3", this.jTextField3.getText());
+        
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        mSwimmers.put("mSwimmer5", this.jTextField5.getText());
+        
     }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
-        fSwimmers.put("fSwimmer", this.jTextField8.getText());
+        
     }//GEN-LAST:event_jTextField8ActionPerformed
 
     private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
-        fSwimmers.put("mSwimmer5", this.jTextField9.getText());
+        
     }//GEN-LAST:event_jTextField9ActionPerformed
 
     private void jTextField13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField13ActionPerformed
-        judges.put("judge3", this.jTextField11.getText());
+        
     }//GEN-LAST:event_jTextField13ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        for (int i = 1 ; i<=this.noOfmSwim;i++){
+            mSwimmers.put("mSwimmer"+i, this.male[i-1].getText());
+        }
+        
+        for (int i = 1 ; i<=this.noOffSwim;i++){
+            fSwimmers.put("fSwimmer"+i, this.female[i-1].getText());
+        }
+        
+        for (int i = 1 ; i<=this.noOfJudges;i++){
+            judges.put("judge"+i, this.judge[i-1].getText());
+        }
+        
+        
         this.setVisible(false);
         HashMap<String, HashMap> people = new HashMap<String, HashMap>();
         people.put("mSwimmers", this.mSwimmers);
         people.put("fSwimmers", this.fSwimmers);
         people.put("judges", this.judges);
         SwimmingCompetition.createPeople(people);
+        SwimmingCompetition.pool = new SwimmingPool();
+        SwimmingCompetition.pool.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
