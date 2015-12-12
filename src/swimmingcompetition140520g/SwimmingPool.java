@@ -3,6 +3,7 @@ package swimmingcompetition140520g;
 import java.util.HashMap;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JTable;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -29,7 +30,7 @@ public class SwimmingPool extends javax.swing.JFrame {
         for (JLabel l : this.labels){
             l.setVisible(false);
         }
-        
+                
     }
     
     
@@ -41,6 +42,10 @@ public class SwimmingPool extends javax.swing.JFrame {
     public static void setX(javax.swing.JLabel label,int x){
         
         label.setLocation(x,label.getY());
+    }
+    
+    public static void updateTable(JTable table,int row,int column,Object value){
+        table.getModel().setValueAt(value, row, column);
     }
     
     /**
@@ -75,7 +80,7 @@ public class SwimmingPool extends javax.swing.JFrame {
 
         jTable1.setBackground(new java.awt.Color(11, 7, 7));
         jTable1.setFont(new java.awt.Font("Digital-7", 1, 15)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(13, 213, 41));
+        jTable1.setForeground(new java.awt.Color(0, 238, 34));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 { new Integer(1), null, null, null},
@@ -139,6 +144,7 @@ public class SwimmingPool extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(148, 229, 254));
         jPanel2.setForeground(new java.awt.Color(148, 229, 254));
+        jPanel2.setPreferredSize(new java.awt.Dimension(803, 65));
 
         jLabel2.setText("jLabel2");
 
@@ -156,11 +162,12 @@ public class SwimmingPool extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addGap(27, 27, 27))
         );
 
         jPanel3.setBackground(new java.awt.Color(148, 229, 254));
         jPanel3.setForeground(new java.awt.Color(148, 229, 254));
+        jPanel3.setPreferredSize(new java.awt.Dimension(803, 65));
 
         jLabel3.setText("jLabel3");
 
@@ -178,11 +185,12 @@ public class SwimmingPool extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addGap(27, 27, 27))
         );
 
         jPanel4.setBackground(new java.awt.Color(148, 229, 254));
         jPanel4.setForeground(new java.awt.Color(148, 229, 254));
+        jPanel4.setPreferredSize(new java.awt.Dimension(803, 65));
 
         jLabel4.setText("jLabel4");
 
@@ -200,11 +208,12 @@ public class SwimmingPool extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addGap(27, 27, 27))
         );
 
         jPanel5.setBackground(new java.awt.Color(148, 229, 254));
         jPanel5.setForeground(new java.awt.Color(148, 229, 254));
+        jPanel5.setPreferredSize(new java.awt.Dimension(803, 65));
 
         jLabel5.setText("jLabel5");
 
@@ -222,11 +231,12 @@ public class SwimmingPool extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addGap(27, 27, 27))
         );
 
         jPanel6.setBackground(new java.awt.Color(148, 229, 254));
         jPanel6.setForeground(new java.awt.Color(148, 229, 254));
+        jPanel6.setPreferredSize(new java.awt.Dimension(803, 65));
 
         jLabel6.setText("jLabel6");
 
@@ -244,7 +254,7 @@ public class SwimmingPool extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel6)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addGap(27, 27, 27))
         );
 
         jButton1.setText("Start Competition");
@@ -296,22 +306,22 @@ public class SwimmingPool extends javax.swing.JFrame {
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(159, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        
         SwimmingCompetition.createLanes();
-        System.out.println(this.labels.length);
-        for(int i=0;i<SwimmingCompetition.lanes.length;i++){
-            (SwimmingCompetition.lanes[i]).setLabel(this.labels[i]);
+        for(int i=0;i<SwimmingCompetition.lanes.size();i++){
+            (SwimmingCompetition.lanes.get(i)).setLabel(this.labels[i]);
             labels[i].setVisible(true);
             labels[i].setIcon(mSwimmericon);
         }
         
+        SwimmingCompetition.sBoard.setTable(jTable1);
         SwimmingCompetition.startit();
         
     }//GEN-LAST:event_jButton1ActionPerformed

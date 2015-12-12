@@ -8,6 +8,7 @@ package swimmingcompetition140520g;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.CyclicBarrier;
 import javax.swing.ButtonGroup;
 import static swimmingcompetition140520g.SwimmingCompetition.peopleInfo;
 
@@ -25,7 +26,9 @@ public class SwimmingCompetitionGui extends javax.swing.JFrame {
         initComponents();
         bgroup.add(jRadioButton1);
         bgroup.add(jRadioButton2);
-        jRadioButton1.setSelected(true);
+        jRadioButton1.setEnabled(false);
+        jRadioButton2.setEnabled(false);
+        jButton1.setEnabled(false);
     }
     
     
@@ -90,8 +93,18 @@ public class SwimmingCompetitionGui extends javax.swing.JFrame {
         jSpinner1.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
 
         jSpinner2.setModel(new javax.swing.SpinnerNumberModel(0, 0, 5, 1));
+        jSpinner2.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSpinner2StateChanged(evt);
+            }
+        });
 
         jSpinner3.setModel(new javax.swing.SpinnerNumberModel(0, 0, 5, 1));
+        jSpinner3.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSpinner3StateChanged(evt);
+            }
+        });
 
         jSpinner4.setModel(new javax.swing.SpinnerNumberModel(1, 1, 3, 1));
 
@@ -101,6 +114,11 @@ public class SwimmingCompetitionGui extends javax.swing.JFrame {
         jLabel11.setText("Type of Competition");
 
         jRadioButton1.setText("Male");
+        jRadioButton1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jRadioButton1StateChanged(evt);
+            }
+        });
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton1ActionPerformed(evt);
@@ -108,6 +126,16 @@ public class SwimmingCompetitionGui extends javax.swing.JFrame {
         });
 
         jRadioButton2.setText("Female");
+        jRadioButton2.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jRadioButton2StateChanged(evt);
+            }
+        });
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -240,14 +268,37 @@ public class SwimmingCompetitionGui extends javax.swing.JFrame {
                 this.noOfSpec ,this.noOfJudges ,this.noOfSup));
         peopleInfo = new PeopleInfoGUI(this.noOfmSwim,this.noOffSwim ,
                 this.noOfSpec ,this.noOfJudges ,this.noOfSup);
+        
         SwimmingCompetition.peopleInfo.setVisible(true);
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
+        jButton1.setEnabled(true);
     }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jSpinner2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner2StateChanged
+        jRadioButton1.setEnabled(true);
+        jButton1.setEnabled(false);
+    }//GEN-LAST:event_jSpinner2StateChanged
+
+    private void jSpinner3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner3StateChanged
+       jRadioButton2.setEnabled(true);
+       jButton1.setEnabled(false);
+    }//GEN-LAST:event_jSpinner3StateChanged
+
+    private void jRadioButton1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jRadioButton1StateChanged
+        
+    }//GEN-LAST:event_jRadioButton1StateChanged
+
+    private void jRadioButton2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jRadioButton2StateChanged
+    
+    }//GEN-LAST:event_jRadioButton2StateChanged
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        jButton1.setEnabled(true);
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -38,7 +38,7 @@ public class PeopleInfoGUI extends javax.swing.JFrame {
     public PeopleInfoGUI(int noOfmSwim, int noOffSwim, int noOfSpec, int noOfJudges, int noOfSup) {
         
         initComponents();
-        this.male = new JTextField[]{jTextField11,jTextField2,jTextField3,jTextField4,jTextField5};
+        this.male = new JTextField[]{jTextField1,jTextField2,jTextField3,jTextField4,jTextField5};
         this.female = new JTextField[]{jTextField6,jTextField7,jTextField8,jTextField9,jTextField10};
         this.judge = new JTextField[]{jTextField11,jTextField12,jTextField13};
         this.noOfmSwim = noOfmSwim;
@@ -501,7 +501,6 @@ public class PeopleInfoGUI extends javax.swing.JFrame {
         for (int i = 1 ; i<=this.noOfmSwim;i++){
             mSwimmers.put("mSwimmer"+i, this.male[i-1].getText());
         }
-        
         for (int i = 1 ; i<=this.noOffSwim;i++){
             fSwimmers.put("fSwimmer"+i, this.female[i-1].getText());
         }

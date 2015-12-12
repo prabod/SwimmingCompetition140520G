@@ -235,6 +235,9 @@
               <SpinnerModel initial="0" maximum="5" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSpinner2StateChanged"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JSpinner" name="jSpinner3">
           <Properties>
@@ -242,6 +245,9 @@
               <SpinnerModel initial="0" maximum="5" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSpinner3StateChanged"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JSpinner" name="jSpinner4">
           <Properties>
@@ -270,6 +276,7 @@
             <Property name="text" type="java.lang.String" value="Male"/>
           </Properties>
           <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jRadioButton1StateChanged"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton1ActionPerformed"/>
           </Events>
         </Component>
@@ -277,6 +284,10 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Female"/>
           </Properties>
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jRadioButton2StateChanged"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton2ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

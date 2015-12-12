@@ -5,6 +5,7 @@
  */
 package swimmingcompetition140520g;
 
+import java.util.ArrayList;
 import model.*;
 import java.util.HashMap;
 import java.util.List;
@@ -27,31 +28,24 @@ public class SwimmingCompetition {
     private static int noOfSupportStaff;                       //# of Support Staff
     
     public static int type;
-    
+    static ScoreBoard sBoard;
     static PeopleInfoGUI peopleInfo;
     static SwimmingPool pool;
     static HashMap<String, HashMap> names;
 
     //Empty Arrays to Hold Swimmers, Lanes, Spectators, Judges
-    protected static Swimmer[] mSwimmers;
-    protected static Swimmer[] fSwimmers;
-    protected static Lane[] lanes;
-    protected static Spectator[] spectators;
-    protected static Judge[] judges;
-    protected static SupportStaff[] supportStaff;
-    final static CyclicBarrier gate = new CyclicBarrier(6);
+    protected static ArrayList<Swimmer> mSwimmers = new ArrayList<>();
+    protected static ArrayList<Swimmer> fSwimmers = new ArrayList<>();
+    protected static ArrayList<Lane> lanes = new ArrayList<>();
+    protected static ArrayList<Spectator> spectators = new ArrayList<>();
+    protected static ArrayList<Judge> judges = new ArrayList<>();
+    protected static ArrayList<SupportStaff> supportStaff = new ArrayList<>();
 
     public static void main(String[] args) {
         SwimmingCompetitionGui SCGui = new SwimmingCompetitionGui();
         SCGui.setVisible(true);
-        try {
-            gate.await();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(SwimmingCompetition.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (BrokenBarrierException ex) {
-            Logger.getLogger(SwimmingCompetition.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+        sBoard = new ScoreBoard();
+        
     }
     public static void setType(int typei){
         type = typei;
@@ -61,6 +55,7 @@ public class SwimmingCompetition {
         //Create Competition
         if(noOfMSwimmers != 0 ){
             createMaleSwimmers(names.get("mSwimmers"));
+            System.out.println(names.get("mSwimmers"));
         }
         if(noOfFSwimmers != 0){
             createFemaleSwimmers(names.get("fSwimmers"));
@@ -72,8 +67,8 @@ public class SwimmingCompetition {
     }
 
     public static void setQuantities(List<Integer> quantities) {
-        noOfFSwimmers = (int) quantities.get(0);                          //# of Female Swimmers
-        noOfMSwimmers = (int) quantities.get(1);                          //# of Male Swimmers
+        noOfMSwimmers = (int) quantities.get(0);                          //# of Female Swimmers
+        noOfFSwimmers = (int) quantities.get(1);                          //# of Male Swimmers
         noOfLanes = 5;                                                    //# of Lanes
         noOfSpectators = (int) quantities.get(2);                         //# of Spectators
         noOfJudges = (int) quantities.get(3);                             //# of Judges
@@ -81,58 +76,56 @@ public class SwimmingCompetition {
     }
 
     private static void createMaleSwimmers(HashMap<String, String> names) {
-        SwimmingCompetition.mSwimmers = new Swimmer[SwimmingCompetition.noOfMSwimmers];
         for (int i = 0; i < SwimmingCompetition.noOfMSwimmers; i++) {
-            SwimmingCompetition.mSwimmers[i] = new MaleSwimmer((String) names.get("mSwimmer" + i + 1));
+            String name = names.get("mSwimmer" + i + 1);
+            mSwimmers.add(new MaleSwimmer(name));
         }
     }
 
     private static void createFemaleSwimmers(HashMap<String, String> names) {
-        SwimmingCompetition.fSwimmers = new Swimmer[SwimmingCompetition.noOfFSwimmers];
         for (int i = 0; i < SwimmingCompetition.noOfFSwimmers; i++) {
-            SwimmingCompetition.fSwimmers[i] = new FemaleSwimmer((String) names.get("fSwimmer" + i + 1));
+            fSwimmers.add(new FemaleSwimmer((String) names.get("fSwimmer" + i + 1)));
         }
     }
 
     private static void createSupportStaff() {
-        SwimmingCompetition.supportStaff = new SupportStaff[SwimmingCompetition.noOfSupportStaff];
-        for (int i = 0; i < SwimmingCompetition.noOfSupportStaff; i++) {
-            SwimmingCompetition.supportStaff[i] = new SupportStaff();
+        for (int i = 0; i < noOfSupportStaff; i++) {
+            supportStaff.add(new SupportStaff());
         }
     }
 
     public static void createLanes() {
-        SwimmingCompetition.lanes = new Lane[SwimmingCompetition.noOfLanes];
-        int limit = SwimmingCompetition.noOfLanes;
-        Swimmer[] temp = null;
-        if(SwimmingCompetition.type == 1){
+        ArrayList<Swimmer> temp = null;
+        if(type == 1){
             temp = mSwimmers;
         }
-        else if (SwimmingCompetition.type == 2){
+        else if (type == 2){
             temp = fSwimmers;
         }   
-        for (int i = 0; i < temp.length; i++) {
-            lanes[i] = new Lane(i,temp[i],gate);
-        }
         
+        for (int i = 0; i < temp.size(); i++) {
+            lanes.add(new Lane(i,temp.get(i)));
+            lanes.get(i).addObserver(sBoard);
+        }
     }
     public static void startit(){
         for (Lane lane : lanes) {
             lane.start();
         }
+        
+        
+        
     }
     
     private static void createSpectators() {
-        SwimmingCompetition.spectators = new Spectator[SwimmingCompetition.noOfSpectators];
-        for (int i = 0; i < SwimmingCompetition.noOfSpectators; i++) {
-            SwimmingCompetition.spectators[i] = new Spectator();
+        for (int i = 0; i < noOfSpectators; i++) {
+            spectators.add(new Spectator());
         }
     }
 
     private static void createJudges(HashMap<String, String> names) {
-        SwimmingCompetition.judges = new Judge[SwimmingCompetition.noOfJudges];
-        for (int i = 0; i < SwimmingCompetition.noOfJudges; i++) {
-            SwimmingCompetition.judges[i] = new Judge((String) names.get("judge " + i + 1));
+        for (int i = 0; i < noOfJudges; i++) {
+            judges.add(new Judge((String) names.get("judge " + i + 1)));
         }
     }
 
