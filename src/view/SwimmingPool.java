@@ -486,10 +486,10 @@ public class SwimmingPool extends javax.swing.JFrame {
         }
         String comp = (String) jComboBox1.getSelectedItem();
         if (SwimmingCompetition.type == 1) {
-                comp += " Male"+new SimpleDateFormat("yyyyMMdd_HHmmss")
+                comp += " Male"+new SimpleDateFormat("yyyyMMdd")
                         .format(Calendar.getInstance().getTime());
             } else if (SwimmingCompetition.type == 2) {
-                comp += " Feale"+new SimpleDateFormat("yyyyMMdd_HHmmss")
+                comp += " Female"+new SimpleDateFormat("yyyyMMdd")
                         .format(Calendar.getInstance().getTime());
             }
         SwimmingCompetition.db.saveResult(comp,

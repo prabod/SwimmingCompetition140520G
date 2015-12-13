@@ -9,13 +9,14 @@ import com.mongodb.Block;
 import com.mongodb.client.FindIterable;
 import controller.SwimmingCompetition;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import org.bson.Document;
-import static view.ShowResult.Tmodel;
 
 /**
  *
@@ -24,7 +25,6 @@ import static view.ShowResult.Tmodel;
 public class ShowResult extends javax.swing.JFrame {
 
     FindIterable<Document> query;
-    static DefaultTableModel Tmodel;
 
     /**
      * Creates new form ShowResult
@@ -32,9 +32,8 @@ public class ShowResult extends javax.swing.JFrame {
     public ShowResult() {
         initComponents();
         query = SwimmingCompetition.db.getResults();
-        String[] columnNames = {"Competition", "Results"};
-        Tmodel = new DefaultTableModel(columnNames, 0);
         for (Document document : query) {
+            System.out.println(document);
             String col1 = (String) document.get("comp");
             String[] head = new String[]{
                 "Lane", "Name", "Time", "Place"
@@ -43,27 +42,28 @@ public class ShowResult extends javax.swing.JFrame {
             DefaultTableModel model1 = new DefaultTableModel(head, 0);
             ArrayList line1 = (ArrayList) document.get("Lane1");
             model1.addRow(line1.toArray());
-            ArrayList line2 = (ArrayList) document.get("Lane1");
+            ArrayList line2 = (ArrayList) document.get("Lane2");
             model1.addRow(line2.toArray());
-            ArrayList line3 = (ArrayList) document.get("Lane1");
+            ArrayList line3 = (ArrayList) document.get("Lane3");
             model1.addRow(line3.toArray());
-            ArrayList line4 = (ArrayList) document.get("Lane1");
+            ArrayList line4 = (ArrayList) document.get("Lane4");
             model1.addRow(line4.toArray());
-            ArrayList line5 = (ArrayList) document.get("Lane1");
+            ArrayList line5 = (ArrayList) document.get("Lane5");
             model1.addRow(line5.toArray());
             results.setModel(model1);
-
-            JScrollPane tableContainer = new JScrollPane(results);
-
-            this.getContentPane().add(tableContainer, BorderLayout.CENTER);
-            this.getContentPane().repaint();
-            this.getContentPane().revalidate();
-            
-            
+            results.setPreferredScrollableViewportSize(new Dimension(300, 80));
+            results.setFillsViewportHeight(true);
+            results.repaint();
+            jScrollPane1.getViewport().add(results);
+            jScrollPane1.repaint();
         }
-        
-        this.getContentPane().repaint();
-        this.getContentPane().revalidate();
+        jScrollPane1.repaint();
+        repaint();
+        pack();
+        //repaint();
+        // pack();
+        //this.getContentPane().repaint();
+        //this.getContentPane().revalidate();
     }
 
     /**
@@ -75,17 +75,36 @@ public class ShowResult extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(13, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
@@ -93,5 +112,7 @@ public class ShowResult extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
