@@ -21,7 +21,7 @@ import javax.swing.JTable;
  */
 public class ScoreBoard implements Observer {
 
-    JTable scoreBoard;
+    private JTable scoreBoard;
     protected HashMap scores;
     protected HashMap times =  new HashMap();
 
@@ -29,12 +29,13 @@ public class ScoreBoard implements Observer {
         this.scoreBoard = table;
     }
 
-    public void collectFinishTimes() {
+    public void collectFinishTimes() { //collect finish times from swimmers
          if (this.times.size() == SwimmingCompetition.getLane().size()){
              compareFinishTimes();
              SwimmingCompetition.notifySpec(this.times);
              SwimmingCompetition.notifyJudge(this.times);
              SwimmingCompetition.notifyStaff(this.times);
+             SwimmingCompetition.stopit();
          }
     }
 
@@ -42,7 +43,7 @@ public class ScoreBoard implements Observer {
         SwimmingCompetition.pool.updateTable(table, row, column, value);
     }
 
-    public void compareFinishTimes() {
+    public void compareFinishTimes() { //compare finish times and rank them
         Object[] a = this.times.entrySet().toArray();
         Arrays.sort(a, new Comparator() {
             public int compare(Object o1, Object o2) {
@@ -57,11 +58,10 @@ public class ScoreBoard implements Observer {
         }
     }
     
-    public void setNames(){
+    public void setNames(){ //set names in the scoreboard
         for(int i = 0 ;i< SwimmingCompetition.getLane().size();i++){
             Lane lane = SwimmingCompetition.getLane().get(i);
             insertScore(this.scoreBoard,i,1,lane.getSwimmer().getName());
-            System.out.println(lane.getSwimmer().getName());
         }
     }
 

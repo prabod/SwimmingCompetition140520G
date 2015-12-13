@@ -37,7 +37,7 @@ public class Lane extends Observable implements Runnable {
         this.touchpad = new Touchpad();
     }
 
-    public synchronized void change() {
+    public synchronized void change() {                      //change the icons location
         while (SwimmingPool.returnX(label) <= 700) {
             long cTime = System.currentTimeMillis() - this.startTime;
             setChanged();
@@ -50,10 +50,10 @@ public class Lane extends Observable implements Runnable {
                 setFinishTime((float) cTime / 1000);
             }
             else s.add(false);
-            notifyObservers(s);
+            notifyObservers(s);                             //notify scoreboard
             SwimmingPool.setX(label, SwimmingPool.returnX(label) + 1);
             try {
-                Thread.sleep(swimmer.speed);
+                Thread.sleep(swimmer.speed);                
             } catch (InterruptedException ex) {
             }
         }
@@ -77,9 +77,12 @@ public class Lane extends Observable implements Runnable {
     public void start() {
         if (t == null) {
             t = new Thread(this);
-            t.start();
-            setStartTime(System.currentTimeMillis());
+            t.start();              //start the thread
+            setStartTime(System.currentTimeMillis()); //set start time
         }
+    }
+    public void stop(){
+        t.stop();           //stop the thread
     }
 
 }

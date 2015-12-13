@@ -132,6 +132,12 @@ public class SwimmingCompetition {
         sBoard.setNames();
            
     }
+    public static void stopit(){
+        for (Lane lane : lanes) {
+            lane.stop();
+        }
+           
+    }
     
     public static void notifySpec(HashMap scores){
         for(Spectator spec: spectators){
