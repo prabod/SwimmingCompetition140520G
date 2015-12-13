@@ -6,19 +6,12 @@
 package database;
 
 import com.mongodb.MongoClient;
-import com.mongodb.MongoException;
-import com.mongodb.WriteConcern;
-
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
-import com.mongodb.BasicDBObject;
-import com.mongodb.DBObject;
-import com.mongodb.DBCursor;
-
-import com.mongodb.ServerAddress;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import java.util.ArrayList;
 import java.util.Arrays;
+import org.bson.Document;
 
 /**
  *
@@ -36,16 +29,21 @@ public class Database {
         this.coll = db.getCollection("Results");
         if (coll == null) {
             db.createCollection("Results");
+            this.coll = db.getCollection("Results");
         }
     }
 
-    public void saveResult(int lane,String name,float time,int place) {
+    public void saveResult(String comp,ArrayList lane1,ArrayList lane2,ArrayList lane3,
+            ArrayList lane4,ArrayList lane5) {
         try {
 
-            BasicDBObject doc = new BasicDBObject("Lane",lane ).
-                    append("Name",name ).
-                    append("Time", time).
-                    append("Place", place);
+            Document doc = new Document().
+                    append("comp", comp).
+                    append("Lane1",lane1 ).
+                    append("Lane2",lane2).
+                    append("Lane3", lane3).
+                    append("Lane4", lane4).
+                    append("Lane5", lane5);
 
             coll.insertOne(doc);
         } catch (Exception e) {
@@ -54,5 +52,8 @@ public class Database {
     }
     public void save(Object obj){
         coll.insertOne(obj);
+    }
+    public FindIterable<Document> getResults(){
+        return coll.find();
     }
 }

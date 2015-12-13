@@ -5,6 +5,7 @@
  */
 package controller;
 
+import database.Database;
 import view.SwimmingCompetitionGui;
 import view.PeopleInfoGUI;
 import view.SwimmingPool;
@@ -13,6 +14,7 @@ import model.*;
 import java.util.HashMap;
 import java.util.List;
 import model.ScoreBoard;
+import view.ShowResult;
 
 /**
  *
@@ -31,8 +33,9 @@ public class SwimmingCompetition {
     static ScoreBoard sBoard;
     public static PeopleInfoGUI peopleInfo;
     public static SwimmingPool pool;
+    public static ShowResult res;
     static HashMap<String, HashMap> names;
-
+    public static Database db;
     //Empty Arrays to Hold Swimmers, Lanes, Spectators, Judges
     protected static ArrayList<Swimmer> mSwimmers = new ArrayList<>();
     protected static ArrayList<Swimmer> fSwimmers = new ArrayList<>();
@@ -45,6 +48,7 @@ public class SwimmingCompetition {
         SwimmingCompetitionGui SCGui = new SwimmingCompetitionGui();
         SCGui.setVisible(true);
         sBoard = new ScoreBoard();
+        db = new Database();
         
     }
     public static PeopleInfoGUI getPeopleInfo(){

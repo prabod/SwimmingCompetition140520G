@@ -7,8 +7,6 @@ package view;
 
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.CyclicBarrier;
 import javax.swing.ButtonGroup;
 import controller.SwimmingCompetition;
 import static controller.SwimmingCompetition.peopleInfo;
