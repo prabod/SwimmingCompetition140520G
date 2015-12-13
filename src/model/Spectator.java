@@ -5,13 +5,15 @@
  */
 package model;
 
+import java.util.HashMap;
+
 /**
  *
  * @author prabod
  */
 public class Spectator extends Person{
     
-    private boolean watching = false;
+    private HashMap scores;
     private static int noOfSpectators = 0;
     
     public Spectator() {
@@ -22,8 +24,8 @@ public class Spectator extends Person{
     /**
      * Set Spectator state to Watching
      */
-    public void watch(){
-        this.watching = true;
+    public void watch(HashMap score){
+        this.scores = score;
     }
     
     /**

@@ -32,6 +32,7 @@ public class ScoreBoard implements Observer {
     public void collectFinishTimes() {
          if (this.times.size() == SwimmingCompetition.lanes.size()){
              compareFinishTimes();
+             SwimmingCompetition.notifySpec(this.times);
          }
     }
 

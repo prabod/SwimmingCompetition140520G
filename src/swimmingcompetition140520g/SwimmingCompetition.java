@@ -9,10 +9,6 @@ import java.util.ArrayList;
 import model.*;
 import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.BrokenBarrierException;
-import java.util.concurrent.CyclicBarrier;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -55,7 +51,6 @@ public class SwimmingCompetition {
         //Create Competition
         if(noOfMSwimmers != 0 ){
             createMaleSwimmers(names.get("mSwimmers"));
-            System.out.println(names.get("mSwimmers"));
         }
         if(noOfFSwimmers != 0){
             createFemaleSwimmers(names.get("fSwimmers"));
@@ -77,14 +72,14 @@ public class SwimmingCompetition {
 
     private static void createMaleSwimmers(HashMap<String, String> names) {
         for (int i = 0; i < SwimmingCompetition.noOfMSwimmers; i++) {
-            String name = names.get("mSwimmer" + i + 1);
+            String name = names.get("mSwimmer" + (i + 1));
             mSwimmers.add(new MaleSwimmer(name));
         }
     }
 
     private static void createFemaleSwimmers(HashMap<String, String> names) {
         for (int i = 0; i < SwimmingCompetition.noOfFSwimmers; i++) {
-            fSwimmers.add(new FemaleSwimmer((String) names.get("fSwimmer" + i + 1)));
+            fSwimmers.add(new FemaleSwimmer((String) names.get("fSwimmer" + (i + 1))));
         }
     }
 
@@ -112,9 +107,14 @@ public class SwimmingCompetition {
         for (Lane lane : lanes) {
             lane.start();
         }
-        
-        
-        
+        sBoard.setNames();
+           
+    }
+    
+    public static void notifySpec(HashMap scores){
+        for(Spectator spec: spectators){
+            spec.watch(scores);
+        }
     }
     
     private static void createSpectators() {
@@ -125,7 +125,7 @@ public class SwimmingCompetition {
 
     private static void createJudges(HashMap<String, String> names) {
         for (int i = 0; i < noOfJudges; i++) {
-            judges.add(new Judge((String) names.get("judge " + i + 1)));
+            judges.add(new Judge((String) names.get("judge " + (i + 1))));
         }
     }
 
