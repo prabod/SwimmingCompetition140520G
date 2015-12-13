@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.util.HashMap;
+
 /**
  *
  * @author prabod
@@ -12,7 +14,7 @@ package model;
 public class Judge extends Person{
     
     private boolean whistle;
-    
+    private HashMap scores;
     private static int noOfJudges = 0;
     
     /**
@@ -39,5 +41,9 @@ public class Judge extends Person{
     public boolean blowWhistle(){
         this.whistle = true;
         return this.whistle;
+    }
+    
+    public void watch(HashMap score){
+        this.scores = score;
     }
 }

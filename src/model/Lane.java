@@ -7,9 +7,8 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Observable;
-import java.util.concurrent.TimeUnit;
 import javax.swing.JLabel;
-import swimmingcompetition140520g.SwimmingPool;
+import view.SwimmingPool;
 
 /**
  *
@@ -21,7 +20,7 @@ public class Lane extends Observable implements Runnable {
     protected int laneNumber;
     protected Swimmer swimmer;
     protected long startTime;
-    protected long finishTime;
+    protected float finishTime;
     protected Touchpad touchpad;
     JLabel label;
 
@@ -47,6 +46,8 @@ public class Lane extends Observable implements Runnable {
             s.add(this.laneNumber);
             if (SwimmingPool.returnX(label)==700){
                 s.add(true);
+                touchpad.touch((float) cTime / 1000);
+                setFinishTime((float) cTime / 1000);
             }
             else s.add(false);
             notifyObservers(s);
@@ -69,7 +70,7 @@ public class Lane extends Observable implements Runnable {
         this.startTime = startTime;
     }
 
-    public void setFinishTime(long finishTime) {
+    public void setFinishTime(float finishTime) {
         this.finishTime = finishTime;
     }
 

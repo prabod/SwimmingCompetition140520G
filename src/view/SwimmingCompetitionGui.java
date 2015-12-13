@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package swimmingcompetition140520g;
+package view;
 
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CyclicBarrier;
 import javax.swing.ButtonGroup;
-import static swimmingcompetition140520g.SwimmingCompetition.peopleInfo;
+import controller.SwimmingCompetition;
+import static controller.SwimmingCompetition.peopleInfo;
 
 /**
  *

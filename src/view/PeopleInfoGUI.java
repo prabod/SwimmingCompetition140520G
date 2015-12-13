@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package swimmingcompetition140520g;
+package view;
 
 import java.util.HashMap;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import controller.SwimmingCompetition;
 
 /**
  *

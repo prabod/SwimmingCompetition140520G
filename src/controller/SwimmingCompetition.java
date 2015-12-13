@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package swimmingcompetition140520g;
+package controller;
 
+import view.SwimmingCompetitionGui;
+import view.PeopleInfoGUI;
+import view.SwimmingPool;
 import java.util.ArrayList;
 import model.*;
 import java.util.HashMap;
 import java.util.List;
+import model.ScoreBoard;
 
 /**
  *
@@ -22,11 +26,11 @@ public class SwimmingCompetition {
     private static int noOfSpectators;                         //# of Spectators
     private static int noOfJudges;                             //# of Judges
     private static int noOfSupportStaff;                       //# of Support Staff
-    
+    public static String stroke;
     public static int type;
     static ScoreBoard sBoard;
-    static PeopleInfoGUI peopleInfo;
-    static SwimmingPool pool;
+    public static PeopleInfoGUI peopleInfo;
+    public static SwimmingPool pool;
     static HashMap<String, HashMap> names;
 
     //Empty Arrays to Hold Swimmers, Lanes, Spectators, Judges
@@ -43,10 +47,24 @@ public class SwimmingCompetition {
         sBoard = new ScoreBoard();
         
     }
+    public static PeopleInfoGUI getPeopleInfo(){
+        return peopleInfo;
+    }
     public static void setType(int typei){
         type = typei;
     }
 
+    public static ArrayList<Lane> getLane(){
+        return lanes;
+    }
+    
+    public static ArrayList<Judge> getJudge(){
+        return judges;
+    }
+    
+    public static ScoreBoard getScoreBoard(){
+        return sBoard;
+    }
     public static void createPeople(HashMap<String, HashMap> names) {
         //Create Competition
         if(noOfMSwimmers != 0 ){
@@ -113,6 +131,18 @@ public class SwimmingCompetition {
     
     public static void notifySpec(HashMap scores){
         for(Spectator spec: spectators){
+            spec.watch(scores);
+        }
+    }
+    
+    public static void notifyJudge(HashMap scores){
+        for(Judge spec: judges){
+            spec.watch(scores);
+        }
+    }
+    
+    public static void notifyStaff(HashMap scores){
+        for(SupportStaff spec: supportStaff){
             spec.watch(scores);
         }
     }
